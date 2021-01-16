@@ -23,3 +23,13 @@ class Solution:
             perm[index],perm[j]=perm[j],perm[index]
             index+=1
             j-=1
+if __name__=='__main__':
+    t=int(input())
+    for _ in range(t):
+        N=int(input())
+        perm=[int (x) for x in input().split()]
+        ob=Solution()
+        ob.nextPermutation(perm,N)
+        for i in perm:
+            print(i,end=" ")
+        print()
