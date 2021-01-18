@@ -1,0 +1,23 @@
+*COURSE SCHEDULE*
+
+class Solution:
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        graph = collections.defaultdict(set)
+        stack=[]
+        count=0
+        visit=[0]*numCourses
+        for node in prerequisites:
+            graph[node[1]].add(node[0])
+            visit[node[0]]+=1
+        for i in range(numCourses):
+            if visit[i]==0:
+                stack.append(i)
+        while stack:
+            temp=stack.pop()
+            for i in graph[temp]:
+                visit[i]-=1
+                if visit[i]==0:
+                    stack.append(i)
+            count+=1
+        return count==numCourses
+
